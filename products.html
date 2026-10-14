@@ -1,0 +1,1642 @@
+3<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shop Chocolates | ChocoHub</title>
+
+<style>
+:root {
+    --brown: #32180F;
+    --dark: #24100B;
+    --caramel: #A85D35;
+    --gold: #F5D45C;
+    --cream: #FFF3DC;
+    --white: #FFFFFF;
+    --background: #F7F5F1;
+    --green: #23865B;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: #30221B;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* TOP ANNOUNCEMENT */
+
+.top-strip {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 9px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px #00000012;
+}
+
+.header-main {
+    max-width: 1450px;
+    margin: auto;
+    padding: 15px 4%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: bold;
+    color: var(--brown);
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--caramel);
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    flex: 1;
+    height: 44px;
+    border: 1px solid #ddd1c5;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #faf8f5;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search-box button {
+    background: var(--gold);
+    color: var(--brown);
+    border: none;
+    padding: 0 20px;
+    font-weight: bold;
+}
+
+/* HEADER ACTIONS */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.header-actions button {
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    color: var(--brown);
+    white-space: nowrap;
+}
+
+.header-icon {
+    font-size: 19px;
+    margin-right: 5px;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    border-top: 1px solid #eee5dc;
+}
+
+.nav-links {
+    max-width: 1450px;
+    margin: auto;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nav-links a {
+    padding: 14px 0;
+    font-size: 13px;
+    color: #59463b;
+}
+
+.nav-links a:hover {
+    color: var(--caramel);
+}
+
+/* MAIN PAGE */
+
+.container {
+    max-width: 1450px;
+    margin: auto;
+    padding: 25px 4% 50px;
+}
+
+.breadcrumb {
+    font-size: 12px;
+    color: #897b71;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: var(--caramel);
+}
+
+/* BANNER */
+
+.shop-banner {
+    background: linear-gradient(110deg, #32180F, #60341F, #A85D35);
+    color: var(--cream);
+    padding: 32px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.shop-banner h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(25px, 3vw, 38px);
+    margin-bottom: 10px;
+}
+
+.shop-banner p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #f4dfc9;
+}
+
+.banner-badge {
+    background: var(--gold);
+    color: var(--brown);
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* PAGE LAYOUT */
+
+.shop-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+
+/* SIDEBAR FILTERS */
+
+.sidebar {
+    background: white;
+    border: 1px solid #eadfd2;
+    border-radius: 10px;
+    padding: 20px;
+    position: sticky;
+    top: 130px;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    color: var(--brown);
+    margin-bottom: 18px;
+}
+
+.filter-group {
+    border-top: 1px solid #eee5dc;
+    padding: 17px 0;
+}
+
+.filter-title {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.filter-option {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #65574e;
+    cursor: pointer;
+}
+
+.filter-option input {
+    accent-color: var(--caramel);
+}
+
+.price-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.price-inputs input {
+    width: 50%;
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #ddd1c5;
+    border-radius: 5px;
+    outline-color: var(--caramel);
+}
+
+.small-button {
+    margin-top: 10px;
+    background: white;
+    border: 1px solid var(--caramel);
+    color: var(--caramel);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.clear-button {
+    width: 100%;
+    padding: 11px;
+    background: #f7eee5;
+    border: none;
+    border-radius: 6px;
+    color: var(--brown);
+    font-weight: bold;
+}
+
+/* PRODUCTS HEADING */
+
+.results-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.results-top h2 {
+    color: var(--brown);
+    font-size: 23px;
+}
+
+.results-count {
+    color: #897b71;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.sort-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #75665e;
+}
+
+.sort-box select {
+    padding: 11px;
+    border: 1px solid #ddd1c5;
+    border-radius: 6px;
+    background: white;
+    outline-color: var(--caramel);
+}
+
+/* PRODUCT GRID */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+}
+
+/* PRODUCT CARD */
+
+.product-card {
+    background: white;
+    border: 1px solid #eee5dc;
+    border-radius: 9px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.25s;
+    min-width: 0;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px #32180f15;
+}
+
+/* PRODUCT IMAGE */
+
+.product-image {
+    height: 195px;
+    position: relative;
+    background: #f4e9db;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-tag {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    padding: 6px 9px;
+    background: #e5f5eb;
+    color: #167449;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+}
+
+.wishlist {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    background: #ffffffed;
+    color: #806e61;
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    font-size: 21px;
+}
+
+.wishlist.active {
+    color: #d12c4c;
+}
+
+/* PRODUCT DETAILS */
+
+.product-details {
+    padding: 13px;
+}
+
+.product-category {
+    color: #9a7a64;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.product-name {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
+    margin-bottom: 8px;
+    color: #34231a;
+}
+
+.rating-line {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    color: #75665e;
+}
+
+.rating {
+    background: var(--green);
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.price-line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #302018;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.old-price {
+    color: #9c9189;
+    text-decoration: line-through;
+    font-size: 11px;
+}
+
+.discount {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.delivery {
+    color: #776a61;
+    font-size: 11px;
+    margin: 10px 0 13px;
+}
+
+/* BUTTONS */
+
+.card-buttons {
+    display: flex;
+    gap: 7px;
+}
+
+.add-cart,
+.enquire {
+    flex: 1;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.add-cart {
+    background: white;
+    color: var(--brown);
+    border: 1px solid var(--brown);
+}
+
+.enquire {
+    background: var(--brown);
+    color: var(--cream);
+    border: 1px solid var(--brown);
+}
+
+.add-cart:hover {
+    background: #f7eee5;
+}
+
+.enquire:hover {
+    background: #60341f;
+}
+
+/* NO RESULTS */
+
+.no-results {
+    grid-column: 1 / -1;
+    background: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #75665e;
+}
+
+.no-results h3 {
+    font-family: Georgia, serif;
+    color: var(--brown);
+    margin-bottom: 10px;
+}
+
+/* BENEFITS */
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.benefit {
+    background: white;
+    border: 1px solid #eadfd2;
+    padding: 17px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    font-size: 26px;
+}
+
+.benefit strong {
+    display: block;
+    color: var(--brown);
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.benefit span {
+    color: #83746a;
+    font-size: 11px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 35px 4%;
+}
+
+.footer-content {
+    max-width: 1450px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-logo {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--gold);
+}
+
+footer p {
+    color: #d5bfae;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+/* TOAST MESSAGE */
+
+.toast {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: var(--dark);
+    color: var(--cream);
+    padding: 14px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px #0003;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s;
+    z-index: 200;
+    font-size: 13px;
+    text-align: center;
+    max-width: 90%;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* MOBILE CONTROLS */
+
+.mobile-controls {
+    display: none;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1150px) {
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 800px) {
+    .header-main {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .search-box {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .header-actions {
+        margin-left: auto;
+        gap: 12px;
+    }
+
+    .account-link {
+        display: none;
+    }
+
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+        position: static;
+    }
+
+    .sidebar.open {
+        display: block;
+    }
+
+    .mobile-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .mobile-controls button {
+        flex: 1;
+        background: white;
+        border: 1px solid #ddd1c5;
+        border-radius: 6px;
+        padding: 11px;
+        font-weight: bold;
+        color: var(--brown);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product-image {
+        height: clamp(135px, 36vw, 230px);
+    }
+
+    .product-details {
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 13px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .shop-banner {
+        padding: 23px;
+    }
+
+    .banner-badge {
+        display: none;
+    }
+
+    .results-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .sort-box {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .sort-box select {
+        max-width: 220px;
+        flex: 1;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 390px) {
+    .card-buttons {
+        flex-direction: column;
+    }
+
+    .add-cart,
+    .enquire {
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip">
+    HANDCRAFTED WITH LOVE 🍫 | A LITTLE HAPPINESS IN EVERY BITE
+</div>
+
+<header>
+
+    <div class="header-main">
+
+        <a href="index.html" class="logo">
+            Choco<span>Hub</span> 🍫
+        </a>
+
+        <form class="search-box" id="searchForm">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search chocolates, flavours, gift boxes..."
+                aria-label="Search chocolates"
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="header-actions">
+            <a href="index.html#contact" class="account-link">
+                <span class="header-icon">♙</span> Account
+            </a>
+
+            <button type="button" id="cartButton">
+                <span class="header-icon">🛒</span>
+                Cart (<span id="cartCount">0</span>)
+            </button>
+        </div>
+
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#all" data-category="all">All Chocolates</a>
+            <a href="#bars" data-category="bars">Chocolate Bars</a>
+            <a href="#truffles" data-category="truffles">Truffles</a>
+            <a href="#bites" data-category="bites">Chocolate Bites</a>
+            <a href="#gifts" data-category="gifts">Gift Boxes</a>
+            <a href="index.html#story">Our Story</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+</header>
+
+<main class="container">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> &nbsp;›&nbsp; Chocolates &nbsp;›&nbsp; All Products
+    </div>
+
+    <section class="shop-banner">
+        <div>
+            <h1>Find Your Chocolate Happiness 🍫</h1>
+            <p>Handcrafted treats, thoughtful gifts, and little moments of sweetness.</p>
+        </div>
+
+        <div class="banner-badge">
+            MADE WITH CHOCOLOVE ✦
+        </div>
+    </section>
+
+    <div class="shop-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <h2>Filter Chocolates</h2>
+
+            <div class="filter-group">
+
+                <div class="filter-title">Category</div>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="bars">
+                    Chocolate Bars
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="truffles">
+                    Truffles
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="bites">
+                    Chocolate Bites
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="gifts">
+                    Gift Boxes
+                </label>
+
+            </div>
+
+            <div class="filter-group">
+
+                <div class="filter-title">Price Range (₹)</div>
+
+                <div class="price-inputs">
+                    <input type="number" id="minPrice" min="0" placeholder="Min">
+                    <input type="number" id="maxPrice" min="0" placeholder="Max">
+                </div>
+
+                <button class="small-button" id="applyPrice">
+                    Apply Price
+                </button>
+
+            </div>
+
+            <div class="filter-group">
+
+                <div class="filter-title">Customer Rating</div>
+
+                <label class="filter-option">
+                    <input type="radio" name="rating" value="4">
+                    4★ & above
+                </label>
+
+                <label class="filter-option">
+                    <input type="radio" name="rating" value="3">
+                    3★ & above
+                </label>
+
+                <label class="filter-option">
+                    <input type="radio" name="rating" value="0" checked>
+                    All Ratings
+                </label>
+
+            </div>
+
+            <button class="clear-button" id="clearFilters">
+                Clear All Filters
+            </button>
+
+        </aside>
+
+        <!-- PRODUCTS SECTION -->
+
+        <section class="results">
+
+            <div class="mobile-controls">
+                <button type="button" id="filterToggle">
+                    ☷ Filters
+                </button>
+
+                <button type="button" id="mobileSort">
+                    ↕ Sort Products
+                </button>
+            </div>
+
+            <div class="results-top">
+
+                <div>
+                    <h2>All Chocolates</h2>
+                    <div class="results-count" id="resultCount">
+                        Explore our sweet collection
+                    </div>
+                </div>
+
+                <label class="sort-box">
+                    Sort by
+
+                    <select id="sortSelect">
+                        <option value="featured">Recommended</option>
+                        <option value="low">Price: Low to High</option>
+                        <option value="high">Price: High to Low</option>
+                        <option value="rating">Customer Rating</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </label>
+
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+
+            <div class="benefits">
+
+                <div class="benefit">
+                    <div class="benefit-icon">🍫</div>
+                    <div>
+                        <strong>Handcrafted Goodness</strong>
+                        <span>Made carefully in small batches.</span>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🎁</div>
+                    <div>
+                        <strong>Gift-Ready Chocolates</strong>
+                        <span>Sweet surprises for every occasion.</span>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">💌</div>
+                    <div>
+                        <strong>Custom Orders</strong>
+                        <span>Ask us about personalised gifts.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <div class="footer-logo">Choco<span>Hub</span> 🍫</div>
+            <p>Handcrafted chocolates for your sweetest moments.</p>
+        </div>
+
+        <div>
+            <p><strong>Contact Us</strong></p>
+            <p>hello@chocohub.example</p>
+            <p>+91 98765 43210 · India</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#story">Our Story</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+
+/* PRODUCT DATA */
+
+const products = [
+
+    {
+        id: 1,
+        name: "Classic Dark Chocolate Bar",
+        category: "bars",
+        price: 129,
+        oldPrice: 169,
+        rating: 4.8,
+        reviews: 124,
+        tag: "BESTSELLER",
+        image: "https://images.unsplash.com/photo-1548907040-4d42bfc2c90b?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 2,
+        name: "Creamy Milk Chocolate Bar",
+        category: "bars",
+        price: 119,
+        oldPrice: 149,
+        rating: 4.7,
+        reviews: 98,
+        tag: "POPULAR",
+        image: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 3,
+        name: "Hazelnut Crunch Chocolate Bar",
+        category: "bars",
+        price: 149,
+        oldPrice: 199,
+        rating: 4.9,
+        reviews: 86,
+        tag: "TOP RATED",
+        image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 4,
+        name: "Almond and Sea Salt Bar",
+        category: "bars",
+        price: 139,
+        oldPrice: 179,
+        rating: 4.5,
+        reviews: 54,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 5,
+        name: "Velvet Chocolate Truffles",
+        category: "truffles",
+        price: 149,
+        oldPrice: 199,
+        rating: 4.9,
+        reviews: 143,
+        tag: "BESTSELLER",
+        image: "https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 6,
+        name: "Cocoa Dust Truffle Box",
+        category: "truffles",
+        price: 199,
+        oldPrice: 249,
+        rating: 4.7,
+        reviews: 76,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 7,
+        name: "Caramel Filled Truffles",
+        category: "truffles",
+        price: 179,
+        oldPrice: 229,
+        rating: 4.6,
+        reviews: 63,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 8,
+        name: "Assorted Truffle Collection",
+        category: "truffles",
+        price: 299,
+        oldPrice: 379,
+        rating: 4.8,
+        reviews: 91,
+        tag: "GIFT PICK",
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 9,
+        name: "Mini Chocolate Bites",
+        category: "bites",
+        price: 99,
+        oldPrice: 129,
+        rating: 4.5,
+        reviews: 110,
+        tag: "VALUE PICK",
+        image: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 10,
+        name: "Chocolate Almond Bites",
+        category: "bites",
+        price: 119,
+        oldPrice: 159,
+        rating: 4.8,
+        reviews: 77,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 11,
+        name: "Crispy Wafer Chocolate Bites",
+        category: "bites",
+        price: 109,
+        oldPrice: 139,
+        rating: 4.4,
+        reviews: 58,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1548907040-4d42bfc2c90b?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 12,
+        name: "Brownie Chocolate Bites",
+        category: "bites",
+        price: 139,
+        oldPrice: 179,
+        rating: 4.7,
+        reviews: 82,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 13,
+        name: "Little Treat Gift Box",
+        category: "gifts",
+        price: 699,
+        oldPrice: 999,
+        rating: 4.8,
+        reviews: 121,
+        tag: "GIFT FAVOURITE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQELQq8l-H8jjRvp80IFTsEjamph8JDXr5SB09dJkY-Xg&s"
+    },
+
+    {
+        id: 14,
+        name: "Birthday Chocolate Hamper",
+        category: "gifts",
+        price: 499,
+        oldPrice: 649,
+        rating: 4.9,
+        reviews: 95,
+        tag: "OCCASION PICK",
+        image: "https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 15,
+        name: "Chocolate Lover Gift Box",
+        category: "gifts",
+        price: 399,
+        oldPrice: 549,
+        rating: 4.8,
+        reviews: 87,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1513883049090-7d5a1adf5e9e?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 16,
+        name: "Premium Mixed Chocolate Box",
+        category: "gifts",
+        price: 599,
+        oldPrice: 799,
+        rating: 4.9,
+        reviews: 64,
+        tag: "PREMIUM",
+        image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80"
+    }
+
+];
+
+/* CATEGORY LABELS */
+
+const categoryNames = {
+    bars: "Chocolate Bars",
+    truffles: "Truffles",
+    bites: "Chocolate Bites",
+    gifts: "Gift Boxes"
+};
+
+/* APP STATE */
+
+let cartCount = 0;
+let searchText = "";
+let minimumPrice = 0;
+let maximumPrice = Infinity;
+let wishlist = new Set();
+
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+
+/* FILTER AND SORT PRODUCTS */
+
+function getFilteredProducts() {
+
+    const selectedCategories = [
+        ...document.querySelectorAll('input[name="category"]:checked')
+    ].map(input => input.value);
+
+    const selectedRating = Number(
+        document.querySelector('input[name="rating"]:checked').value
+    );
+
+    let filtered = products.filter(product => {
+
+        const categoryMatch =
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(product.category);
+
+        const priceMatch =
+            product.price >= minimumPrice &&
+            product.price <= maximumPrice;
+
+        const ratingMatch = product.rating >= selectedRating;
+
+        const searchMatch =
+            (product.name + " " + categoryNames[product.category])
+            .toLowerCase()
+            .includes(searchText);
+
+        return categoryMatch && priceMatch && ratingMatch && searchMatch;
+
+    });
+
+    switch (sortSelect.value) {
+
+        case "low":
+            filtered.sort((a, b) => a.price - b.price);
+            break;
+
+        case "high":
+            filtered.sort((a, b) => b.price - a.price);
+            break;
+
+        case "rating":
+            filtered.sort((a, b) => b.rating - a.rating);
+            break;
+
+        case "name":
+            filtered.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+
+    }
+
+    return filtered;
+}
+
+/* DISPLAY PRODUCTS */
+
+function renderProducts() {
+
+    const filtered = getFilteredProducts();
+
+    document.getElementById("resultCount").textContent =
+        `Showing ${filtered.length} of ${products.length} products`;
+
+    if (filtered.length === 0) {
+
+        productGrid.innerHTML = `
+            <div class="no-results">
+                <h3>No chocolates found 🍫</h3>
+                <p>Try another search or clear your filters.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    productGrid.innerHTML = filtered.map(product => {
+
+        const discount = Math.round(
+            (1 - product.price / product.oldPrice) * 100
+        );
+
+        return `
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x500/F4E9DB/32180F?text=ChocoHub+Chocolate'"
+                >
+
+                ${
+                    product.tag
+                    ? `<span class="product-tag">${product.tag}</span>`
+                    : ""
+                }
+
+                <button
+                    class="wishlist ${wishlist.has(product.id) ? "active" : ""}"
+                    data-wishlist="${product.id}"
+                    aria-label="Add to wishlist"
+                >
+                    ${wishlist.has(product.id) ? "♥" : "♡"}
+                </button>
+
+            </div>
+
+            <div class="product-details">
+
+                <div class="product-category">
+                    ${categoryNames[product.category]}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <div class="rating-line">
+                    <span class="rating">${product.rating} ★</span>
+                    <span>(${product.reviews} reviews)</span>
+                </div>
+
+                <div class="price-line">
+                    <span class="price">₹${product.price}</span>
+                    <span class="old-price">₹${product.oldPrice}</span>
+                    <span class="discount">${discount}% off</span>
+                </div>
+
+                <div class="delivery">
+                    ✓ Handcrafted · Gift-ready packaging
+                </div>
+
+                <div class="card-buttons">
+
+                    <button
+                        class="add-cart"
+                        data-add="${product.id}"
+                    >
+                        Add to Cart
+                    </button>
+
+                    <button
+                        class="enquire"
+                        data-enquire="${product.id}"
+                    >
+                        Enquire
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        `;
+
+    }).join("");
+
+}
+
+/* TOAST MESSAGE */
+
+let toastTimer;
+
+function showToast(message) {
+
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+
+}
+
+/* SEARCH */
+
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    searchText = searchInput.value.trim().toLowerCase();
+
+    renderProducts();
+
+});
+
+searchInput.addEventListener("input", function() {
+
+    searchText = searchInput.value.trim().toLowerCase();
+
+    renderProducts();
+
+});
+
+/* SORT */
+
+sortSelect.addEventListener("change", renderProducts);
+
+/* CATEGORY AND RATING FILTERS */
+
+document.querySelectorAll(
+    'input[name="category"], input[name="rating"]'
+).forEach(input => {
+
+    input.addEventListener("change", renderProducts);
+
+});
+
+/* PRICE FILTER */
+
+document.getElementById("applyPrice").addEventListener("click", function() {
+
+    minimumPrice = Math.max(
+        0,
+        Number(document.getElementById("minPrice").value) || 0
+    );
+
+    const maximumValue = document.getElementById("maxPrice").value;
+
+    maximumPrice = maximumValue === ""
+        ? Infinity
+        : Math.max(0, Number(maximumValue));
+
+    if (maximumPrice < minimumPrice) {
+
+        showToast("Maximum price must be greater than minimum price.");
+
+        return;
+
+    }
+
+    renderProducts();
+
+});
+
+/* CLEAR FILTERS */
+
+document.getElementById("clearFilters").addEventListener("click", function() {
+
+    document.querySelectorAll('input[name="category"]').forEach(input => {
+        input.checked = false;
+    });
+
+    document.querySelector(
+        'input[name="rating"][value="0"]'
+    ).checked = true;
+
+    document.getElementById("minPrice").value = "";
+    document.getElementById("maxPrice").value = "";
+
+    minimumPrice = 0;
+    maximumPrice = Infinity;
+    searchText = "";
+
+    searchInput.value = "";
+    sortSelect.value = "featured";
+
+    renderProducts();
+
+});
+
+/* PRODUCT BUTTONS */
+
+productGrid.addEventListener("click", function(event) {
+
+    const wishlistButton = event.target.closest("[data-wishlist]");
+
+    if (wishlistButton) {
+
+        const id = Number(wishlistButton.dataset.wishlist);
+
+        if (wishlist.has(id)) {
+
+            wishlist.delete(id);
+            showToast("Removed from wishlist.");
+
+        } else {
+
+            wishlist.add(id);
+            showToast("Added to your wishlist ♥");
+
+        }
+
+        renderProducts();
+
+        return;
+
+    }
+
+    const addButton = event.target.closest("[data-add]");
+
+    if (addButton) {
+
+        cartCount++;
+
+        document.getElementById("cartCount").textContent = cartCount;
+
+        showToast("Chocolate added to your cart! 🍫");
+
+        return;
+
+    }
+
+    const enquireButton = event.target.closest("[data-enquire]");
+
+    if (enquireButton) {
+
+        const product = products.find(
+            item => item.id === Number(enquireButton.dataset.enquire)
+        );
+
+        const message =
+            `Hello ChocoHub! I would like to enquire about ${product.name} priced at ₹${product.price}.`;
+
+        const whatsappNumber = "919876543210";
+
+        const whatsappURL =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappURL, "_blank");
+
+    }
+
+});
+
+/* MOBILE FILTER */
+
+document.getElementById("filterToggle").addEventListener("click", function() {
+
+    document.getElementById("sidebar").classList.toggle("open");
+
+});
+
+/* MOBILE SORT */
+
+document.getElementById("mobileSort").addEventListener("click", function() {
+
+    sortSelect.focus();
+
+    sortSelect.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
+
+/* CART BUTTON */
+
+document.getElementById("cartButton").addEventListener("click", function() {
+
+    showToast(`You have ${cartCount} item(s) in your demo cart.`);
+
+});
+
+/* CATEGORY NAVIGATION */
+
+document.querySelectorAll("[data-category]").forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        const category = this.dataset.category;
+
+        document.querySelectorAll('input[name="category"]').forEach(input => {
+
+            input.checked =
+                category !== "all" && input.value === category;
+
+        });
+
+        renderProducts();
+
+    });
+
+});
+
+/* INITIAL DISPLAY */
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
